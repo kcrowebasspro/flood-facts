@@ -24,7 +24,9 @@
 
     <!-- loading the modules -->
     <script>
-        require([ "esri/Map", "esri/views/MapView" ], (Map, MapView) => {
+        require(["esri/Config", "esri/Map", "esri/views/MapView" ], (esriConfig, Map, MapView) => {
+
+            esriConfig.apiKey = "AAPKad326cc7bcc84403ba8d6e5d75e1c216dZOCMYxyqe8Xx6vzlRhWc5FBpZ9YINE2zzacOcvncG8DsWXQT-2XA5QCTvQE3qT4";
 
             // create a base map
             const map = new Map({
