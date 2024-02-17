@@ -35,8 +35,10 @@
 
             //create the map view
             const view = new MapView({
-                container: "viewDiv", //the DOM node that will hold the view
-                 map: map //references the map object
+                map: map, //references the map object
+                center: [-87.89036495240876, 43.06760307953194],
+                zoom: 10,
+                container: "viewDiv" //the DOM node that will hold the view
             });
 
 
