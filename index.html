@@ -7,6 +7,17 @@
 
     <title>Data Collector for AGOL</title>
 
+    <style>
+        html,
+        body,
+        #viewDiv {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+
     <!-- importing the css and libraries for esri.js-->
     <link rel="stylesheet" href="https://js.arcgis.com/4.26/esri/themes/light/main.css" />
     <script src="https://js.arcgis.com/4.26/"></script>
@@ -23,7 +34,7 @@
             //create the map view
             const view = new MapView({
                 container: "viewDiv", //the DOM node that will hold the view
-                map: map //references the map object
+                 map: map //references the map object
             });
 
 
