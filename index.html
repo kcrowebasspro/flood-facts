@@ -15,10 +15,19 @@
     <script>
         require([ "esri/Map", "esri/views/MapView" ], (Map, MapView) => {
 
-            // create a map view
+            // create a base map
             const map = new Map({
                 basemap: "satellite"
             });
+
+            //create the map view
+            const view = new MapView({
+                container: "viewDiv", //the DOM node that will hold the view
+                map: map //references the map object
+            });
+
+
+
 
 
          });
@@ -27,7 +36,8 @@
 
   </head>
   <body>
-   <!-- hello world text to check if everything worked -->
-   <h1>Hello World! I am ready to collect data.</h1>
+
+    <div id = "viewDiv"></div>
+
   </body>
 </html>
