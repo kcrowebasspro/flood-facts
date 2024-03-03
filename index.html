@@ -122,10 +122,23 @@
             // Add the HTF layer to the map
             map.add(htflayer);
 
+            // Style a popup for the NWS flood events
+            const popupFloodevent = {
+                                "title": "<b>{evnt_ty}</b>: {bgn_lct}",
+                                "content": "<br><b>Date:</b> {begn_dt}<br><br><b>Flood cause:</b> {flod_cs}<br><br><b>Event narrative:</b> {evnt_nr}<br><br>"
+                            }
 
+            // Add a layer of NWS flood events from the REST service
+            const floodEventlayer = new FeatureLayer({
+                url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/Mobile_Flood_Events/FeatureServer",
+                
+                //adding the popup here
+                outFields: ["evnt_ty","begn_dt","flod_cs","evnt_nr","bgn_lct"],
+                popupTemplate: popupFloodevent
+                });
 
-
-
+            // Add the flood events layer to the map
+            map.add(floodEventlayer);
 
 
 
