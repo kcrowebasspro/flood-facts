@@ -98,6 +98,9 @@
                 renderer: surveyRenderer
             });
 
+            // Give the survey layer a better title
+            surveylayer.title = "Community Flood Reports";
+
             //add the survey results layer to the map
             map.add(surveylayer);
 
@@ -206,7 +209,7 @@
 
             // Change the legend style to card and make it responsive for mobile
             legend.style = {
-                type: "card",
+                type: "stack",
                 layout: "auto"
                 };
 
