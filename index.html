@@ -93,14 +93,16 @@
             
             // A renderer to style the flood hazards map
             const floodhazardRenderer = {
-                type: "simple-fill",
-                symbol: {
-                color: [164, 38, 38, 0.5],
-                outline: {
-                    color: [255, 255, 255],
-                    width: 0.25
+                    type: "simple",  // autocasts as new SimpleRenderer()
+                    symbol: {
+                        type: "simple-fill",  // autocasts as new SimpleFillSymbol()
+                        color: [ 164, 38, 38, 0.5 ],
+                        outline: {  // autocasts as new SimpleLineSymbol()
+                        width: 1,
+                        color: "white"
+                        }
                     }
-                }}
+                    };
 
 
             // Add a FEMA Special Flood Hazard layer from the AGOL REST service
