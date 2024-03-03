@@ -35,6 +35,7 @@
        .addRecordButton:hover{
         background-color: #005a87;
        }
+       
 
     </style>
 
@@ -140,7 +141,7 @@
             const htflayer = new FeatureLayer({
                 url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/High_Tide_Flood_Mobile/FeatureServer",
                 
-                //adding the popup here
+                //adding the popup and renderer here
                 popupTemplate: popupHtf,
                 renderer: htfRenderer
                 });
@@ -169,7 +170,10 @@
 
 
 
-
+            legend.style = {
+                type: "card",
+                layout: "auto"
+                };
 
             // Add in a legend
             const legend = new Legend({
