@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
 
-    <title>Data Collector for AGOL</title>
+    <title>Flood Facts: Mobile County, Alabama</title>
 
     <style>
         html,
@@ -22,7 +22,7 @@
         z-index: 10;
         top: 10px;
         right: 10px;
-        background-color: #0079c1;
+        background-color: #01c822;
         color: white;
         padding: 8px 16px;
         border: none;
@@ -103,6 +103,34 @@
 
             // Add the layer to the map
             map.add(floodhazardlayer);
+
+            // Add a popup for the high tide flood layer
+            const popupHtf = {
+                                "title": "<b>High Tide Flood Zone</b>",
+                                "content": "<br>Areas that have the potential to flood during a high tide. This phenomenon is also called nuisance flooding, sunny day flooding or king-tide flooding.<br>"
+                            }
+
+
+            // Add a high tide flood layer from the REST service
+            const htflayer = new FeatureLayer({
+                url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/High_Tide_Flood_Mobile/FeatureServer",
+                
+                //adding the popup here
+                popupTemplate: popupHtf
+                });
+
+            // Add the HTF layer to the map
+            map.add(htflayer);
+
+
+
+
+
+
+
+
+
+
 
             // Add in a legend
             const legend = new Legend({
