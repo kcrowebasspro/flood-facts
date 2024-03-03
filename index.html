@@ -167,6 +167,9 @@
                 renderer: htfRenderer
                 });
 
+            // add a title for the HTF layer
+            htflayer.title = "High Tide Flood Zone";
+
             // Add the HTF layer to the map
             map.add(htflayer);
 
@@ -197,13 +200,11 @@
                 renderer: nwsRenderer
                 });
 
+            // add a title for the NWS layer
+            floodEventlayer.title = "National Weather Service Flood Events";
+
             // Add the flood events layer to the map
             map.add(floodEventlayer);
-
-
-
-
-
 
             // Add in a legend
             const legend = new Legend({
