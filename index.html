@@ -49,9 +49,17 @@
             "esri/Map", 
             "esri/views/MapView",
             "esri/layers/FeatureLayer", 
+
+            // Adding in the modules for graphics and graphics layers
+            "esri/Graphic",  
+            "esri/layers/GraphicsLayer", 
+
+            //Add module for the legend
+            "esri/widgets/Legend",
+
             "esri/widgets/Locate",
             "esri/widgets/Search"], 
-            (esriConfig, Map, MapView, FeatureLayer, Locate, Search) => {
+            (esriConfig, Map, MapView, FeatureLayer, Graphic, GraphicsLayer, Legend, Locate, Search) => {
 
             esriConfig.apiKey = "AAPKad326cc7bcc84403ba8d6e5d75e1c216dZOCMYxyqe8Xx6vzlRhWc5FBpZ9YINE2zzacOcvncG8DsWXQT-2XA5QCTvQE3qT4";
 
@@ -64,18 +72,46 @@
             const view = new MapView({
                 map: map, //references the map object
                 center: [-88.15123752487747, 30.759770343058953],
-                zoom: 10,
+                zoom: 9,
                 container: "viewDiv" //the DOM node that will hold the view
             });
 
-            //create a feature layer from the feature service
+            //create a featurelayer for the survey results
             const layer = new FeatureLayer({
                 //URL to the service
                 url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/survey123_9855d07201f74b188060c620a18db3e3_results/FeatureServer"
             });
 
-            //add the layer to the map
+            //add the survey results layer to the map
             map.add(layer);
+
+            // Add a popup for the FEMA SFHA layer
+            const popupFloodHazard = {
+                    "title": "<b>Flood Zone Class:</b> {FLD_ZONE}",
+                    "content": "<br><b>Zone A:</b> Areas with a 1% annual chance of flooding and a 26% chance of flooding over the life of a 30‐year mortgage.<br><br><b>Zone AE:</b> Base flood zone. Areas with a 1% annual chance of flooding and a 26% chance of flooding over the life of a 30‐year mortgage.<br><br><b>Zone VE:</b> Coastal areas with a 1% or greater chance of flooding and an additional hazard associated with storm waves. These areas have a 26% chance of flooding over the life of a 30‐year mortgage."
+                }
+
+
+            // Add a bridges layer from the AGOL REST service
+            const floodhazardlayer = new FeatureLayer({
+                url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/fema_sfha/FeatureServer",
+                
+                //adding the popup here
+                outFields: ["FLD_ZONE"],
+                popupTemplate: popupFloodHazard
+                });
+
+            // Add the layer to the map
+            map.add(floodhazardlayer);
+
+            // Add in a legend
+            const legend = new Legend({
+                view: view
+            });
+
+            // Add legend to the view
+            view.ui.add(legend, "bottom-right");
+
 
 
             //add a locate button
