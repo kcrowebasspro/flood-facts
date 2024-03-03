@@ -98,12 +98,11 @@
                         type: "simple-fill",  // autocasts as new SimpleFillSymbol()
                         color: [ 164, 38, 38, 0.5 ],
                         outline: {  // autocasts as new SimpleLineSymbol()
-                        width: 1,
-                        color: "white"
+                        width: 0.25,
+                        color: "gray"
                         }
                     }
                     };
-
 
             // Add a FEMA Special Flood Hazard layer from the AGOL REST service
             const floodhazardlayer = new FeatureLayer({
@@ -123,14 +122,27 @@
                                 "title": "<b>High Tide Flood Zone</b>",
                                 "content": "<br>Areas that have the potential to flood during a high tide. This phenomenon is also called nuisance flooding, sunny day flooding or king-tide flooding.<br>"
                             }
-
+ 
+            // A renderer to style the high tide flood map
+            const htfRenderer = {
+                    type: "simple",  // autocasts as new SimpleRenderer()
+                    symbol: {
+                        type: "simple-fill",  // autocasts as a a simple polygon fill
+                        color: [ 91, 172, 206, 0.5 ], // a steel blue with 50% opacity
+                        outline: {  // make a thin, subtle outline
+                        width: 0.25,
+                        color: "gray"
+                        }
+                    }
+                    };
 
             // Add a high tide flood layer from the REST service
             const htflayer = new FeatureLayer({
                 url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/High_Tide_Flood_Mobile/FeatureServer",
                 
                 //adding the popup here
-                popupTemplate: popupHtf
+                popupTemplate: popupHtf,
+                renderer: htfRenderer
                 });
 
             // Add the HTF layer to the map
