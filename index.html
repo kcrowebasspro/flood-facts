@@ -22,7 +22,7 @@
         z-index: 10;
         top: 10px;
         right: 10px;
-        background-color: #01c822;
+        background-color: #3e974d;
         color: white;
         padding: 8px 16px;
         border: none;
@@ -77,10 +77,25 @@
                 container: "viewDiv" //the DOM node that will hold the view
             });
 
+
+            // add a custom icon to display flood events reported in the survey
+            const surveyRenderer = {
+                "type": "simple",
+                "symbol": {
+                "type": "picture-marker",
+                "url": "https://raw.githubusercontent.com/kcrowebasspro/flood-facts/main/icons/flooded-house.png",
+                "width": "18px",
+                "height": "18px"
+                }
+            }
+
             //create a featurelayer for the survey results
             const surveylayer = new FeatureLayer({
                 //URL to the service
-                url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/survey123_9463f7e3593541f3921d5f1795347c07_results/FeatureServer"
+                url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/survey123_9463f7e3593541f3921d5f1795347c07_results/FeatureServer",
+
+                // Add a popup and renderer
+                renderer: surveyRenderer
             });
 
             //add the survey results layer to the map
