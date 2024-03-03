@@ -155,13 +155,25 @@
                                 "content": "<br><b>Date:</b> {begn_dt}<br><br><b>Flood cause:</b> {flod_cs}<br><br><b>Event narrative:</b> {evnt_nr}<br><br>"
                             }
 
+            // add a custom icon to display flood events
+            const nwsRenderer = {
+                "type": "simple",
+                "symbol": {
+                "type": "picture-marker",
+                "url": "https://raw.githubusercontent.com/kcrowebasspro/flood-facts/main/icons/flood-risk.png",
+                "width": "18px",
+                "height": "18px"
+                }
+            }
+
             // Add a layer of NWS flood events from the REST service
             const floodEventlayer = new FeatureLayer({
                 url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/Mobile_Flood_Events/FeatureServer",
                 
                 //adding the popup here
                 outFields: ["evnt_ty","begn_dt","flod_cs","evnt_nr","bgn_lct"],
-                popupTemplate: popupFloodevent
+                popupTemplate: popupFloodevent,
+                renderer: nwsRenderer
                 });
 
             // Add the flood events layer to the map
@@ -177,6 +189,7 @@
                 view: view
             });
 
+            // Change the legend style to card and make it responsive for mobile
             legend.style = {
                 type: "card",
                 layout: "auto"
@@ -184,8 +197,6 @@
 
             // Add legend to the view
             view.ui.add(legend, "bottom-right");
-
-
 
             //add a locate button
             const locatBtn = new Locate({
