@@ -112,11 +112,11 @@
             
             // A renderer to style the flood hazards map
             const floodhazardRenderer = {
-                    type: "simple",  // autocasts as new SimpleRenderer()
+                    type: "simple",  
                     symbol: {
-                        type: "simple-fill",  // autocasts as new SimpleFillSymbol()
-                        color: [ 164, 38, 38, 0.5 ],
-                        outline: {  // autocasts as new SimpleLineSymbol()
+                        type: "simple-fill",  // autocasts as polygon
+                        color: [ 89, 126, 216, 0.5 ],
+                        outline: {  
                         width: 0.25,
                         color: "gray"
                         }
@@ -132,6 +132,9 @@
                 popupTemplate: popupFloodHazard,
                 renderer: floodhazardRenderer
                 });
+            
+            // add a title for the SFHA
+            floodhazardlayer.title = "FEMA Special Flood Hazard Area";
 
             // Add the layer to the map
             map.add(floodhazardlayer);
@@ -209,7 +212,7 @@
 
             // Change the legend style to card and make it responsive for mobile
             legend.style = {
-                type: "stack",
+                type: "card",
                 layout: "auto"
                 };
 
