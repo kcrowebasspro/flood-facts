@@ -77,28 +77,43 @@
             });
 
             //create a featurelayer for the survey results
-            const layer = new FeatureLayer({
+            const surveylayer = new FeatureLayer({
                 //URL to the service
                 url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/survey123_9855d07201f74b188060c620a18db3e3_results/FeatureServer"
             });
 
             //add the survey results layer to the map
-            map.add(layer);
+            map.add(surveylayer);
 
             // Add a popup for the FEMA SFHA layer
             const popupFloodHazard = {
                     "title": "<b>Flood Zone Class:</b> {FLD_ZONE}",
                     "content": "<br><b>Zone A:</b> Areas with a 1% annual chance of flooding and a 26% chance of flooding over the life of a 30‐year mortgage.<br><br><b>Zone AE:</b> Base flood zone. Areas with a 1% annual chance of flooding and a 26% chance of flooding over the life of a 30‐year mortgage.<br><br><b>Zone VE:</b> Coastal areas with a 1% or greater chance of flooding and an additional hazard associated with storm waves. These areas have a 26% chance of flooding over the life of a 30‐year mortgage."
                 }
+            
+                // A renderer to style the flood hazards map
+            const floodhazardRenderer = {
+                type: "simple-fill",
+                symbol: {
+                color: [164, 38, 38, 0.5],
+                type: "simple-line",
+                style: "solid",
+                outline: {
+                    color: [255, 255, 255],
+                    width: 0.25
+                    }
+                }};
 
 
-            // Add a bridges layer from the AGOL REST service
+            // Add a FEMA Special Flood Hazard layer from the AGOL REST service
             const floodhazardlayer = new FeatureLayer({
                 url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/fema_sfha/FeatureServer",
                 
                 //adding the popup here
                 outFields: ["FLD_ZONE"],
-                popupTemplate: popupFloodHazard
+                popupTemplate: popupFloodHazard,
+                renderer: floodhazardRenderer,
+                opacity: 0.5
                 });
 
             // Add the layer to the map
