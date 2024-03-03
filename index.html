@@ -170,15 +170,17 @@
 
 
 
-            legend.style = {
-                type: "card",
-                layout: "auto"
-                };
+
 
             // Add in a legend
             const legend = new Legend({
                 view: view
             });
+
+            legend.style = {
+                type: "card",
+                layout: "auto"
+                };
 
             // Add legend to the view
             view.ui.add(legend, "bottom-right");
