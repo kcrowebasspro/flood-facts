@@ -78,6 +78,12 @@
             });
 
 
+            // Add a popup for the FEMA SFHA layer
+            const popupSurvey = {
+                    "title": "<b>Community Flood Report</b>",
+                    "content": "<br><b>Date:</b> {when_did_the_flood_happen}<br><br><b>Time:</b> {what_time_did_the_flood_happen}<br><br><b>Description:</b> {please_describe_the_flooding}<br><br>"
+                }
+
             // add a custom icon to display flood events reported in the survey
             const surveyRenderer = {
                 "type": "simple",
@@ -94,7 +100,10 @@
                 //URL to the service
                 url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/survey123_9463f7e3593541f3921d5f1795347c07_results/FeatureServer",
 
+                // retrieve some data attributes from the feature layer
+                outFields: ["when_did_the_flood_happen","what_time_did_the_flood_happen","please_describe_the_flooding","Photos And Files"],
                 // Add a popup and renderer
+                popupTemplate: popupSurvey,
                 renderer: surveyRenderer
             });
 
