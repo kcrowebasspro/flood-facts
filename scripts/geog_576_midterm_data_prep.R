@@ -35,7 +35,7 @@ flood.points <- tm_shape(flood.events.sf) +
 tmap_leaflet(flood.points)
 
 # write out the flood points
-
+st_write(flood.events.sf, "/Users/crowek/Documents/uw_gis/geog_576/flood-facts/data/mobile_co_floods/mobile_county_floods_since_2018.shp")
 
 # Read in the shapefile of the special flood hazard areas
 sfha.sf <- st_read("/Users/crowek/Documents/uw_gis/geog_576/flood-facts/data/fema_sfha/fema_sfha_mobile_county.shp")
