@@ -9,5 +9,6 @@ The Purpose for the app:
 
 The data sets and sources:
 - Special Flood Hazard Areas: https://www.fema.gov/flood-maps/national-flood-hazard-layer
-- NOAA High Tide Flood data: 
+- NOAA High Tide Flood data: https://www.arcgis.com/apps/mapviewer/index.html?url=https://coast.noaa.gov:443/arcgis/rest/services/FloodExposureMapper/CFEM_HighTideFlooding/MapServer&source=sd
+- NOAA/NCEI Storm Events: https://www.ncdc.noaa.gov/stormevents/
 
