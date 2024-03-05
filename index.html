@@ -147,7 +147,7 @@
             // Add the HTF layer to the map
             map.add(htflayer);
 
-            // Style a popup for the NWS flood events
+            // Style a popup for the NCEI flood events
             const popupFloodevent = {
                                 "title": "<b>{evnt_ty}</b>: {bgn_lct}",
                                 "content": "<br><b>Date:</b> {begn_dt}<br><br><b>Flood cause:</b> {flod_cs}<br><br><b>Event narrative:</b> {evnt_nr}<br><br>"
@@ -164,7 +164,7 @@
                 }
             }
 
-            // Add a layer of NWS flood events from the REST service
+            // Add a layer of NCEI flood events from the REST service
             const floodEventlayer = new FeatureLayer({
                 url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/Mobile_Flood_Events/FeatureServer",
                 
@@ -180,11 +180,11 @@
             // Add the flood events layer to the map
             map.add(floodEventlayer);
 
- // Add a popup for the FEMA SFHA layer
- const popupSurvey = {
-                    "title": "<b>Community Flood Report</b>",
-                    "content": "<br><b>Date:</b> {when_did_the_flood_happen}<br><br><b>Time:</b> {what_time_did_the_flood_happen}<br><br><b>Description:</b> {please_describe_the_flooding}<br><br>"
-                }
+            // Add a popup for the FEMA SFHA layer
+            const popupSurvey = {
+                                "title": "<b>Community Flood Report</b>",
+                                "content": "<br><b>Date:</b> {when_did_the_flood_happen}<br><br><b>Time:</b> {what_time_did_the_flood_happen}<br><br><b>Description:</b> {please_describe_the_flooding}<br><br>"
+                            }
 
             // add a custom icon to display flood events reported in the survey
             const surveyRenderer = {
