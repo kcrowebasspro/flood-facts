@@ -78,42 +78,6 @@
                 container: "viewDiv" //the DOM node that will hold the view
             });
 
-
-            // Add a popup for the FEMA SFHA layer
-            const popupSurvey = {
-                    "title": "<b>Community Flood Report</b>",
-                    "content": "<br><b>Date:</b> {when_did_the_flood_happen}<br><br><b>Time:</b> {what_time_did_the_flood_happen}<br><br><b>Description:</b> {please_describe_the_flooding}<br><br>"
-                }
-
-            // add a custom icon to display flood events reported in the survey
-            const surveyRenderer = {
-                "type": "simple",
-                "symbol": {
-                "type": "picture-marker",
-                "url": "https://raw.githubusercontent.com/kcrowebasspro/flood-facts/main/icons/flooded-house.png",
-                "width": "18px",
-                "height": "18px"
-                }
-            }
-
-            //create a featurelayer for the survey results
-            const surveylayer = new FeatureLayer({
-                //URL to the service
-                url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/survey123_9463f7e3593541f3921d5f1795347c07_results/FeatureServer",
-
-                // retrieve some data attributes from the feature layer
-                outFields: ["when_did_the_flood_happen","what_time_did_the_flood_happen","please_describe_the_flooding"],
-                // Add a popup and renderer
-                popupTemplate: popupSurvey,
-                renderer: surveyRenderer
-            });
-
-            // Give the survey layer a better title
-            surveylayer.title = "Community Flood Reports";
-
-            //add the survey results layer to the map
-            map.add(surveylayer);
-
             // Add a popup for the FEMA SFHA layer
             const popupFloodHazard = {
                     "title": "<b>Flood Zone Class:</b> {FLD_ZONE}",
@@ -215,6 +179,41 @@
 
             // Add the flood events layer to the map
             map.add(floodEventlayer);
+
+ // Add a popup for the FEMA SFHA layer
+ const popupSurvey = {
+                    "title": "<b>Community Flood Report</b>",
+                    "content": "<br><b>Date:</b> {when_did_the_flood_happen}<br><br><b>Time:</b> {what_time_did_the_flood_happen}<br><br><b>Description:</b> {please_describe_the_flooding}<br><br>"
+                }
+
+            // add a custom icon to display flood events reported in the survey
+            const surveyRenderer = {
+                "type": "simple",
+                "symbol": {
+                "type": "picture-marker",
+                "url": "https://raw.githubusercontent.com/kcrowebasspro/flood-facts/main/icons/flooded-house.png",
+                "width": "18px",
+                "height": "18px"
+                }
+            }
+
+            //create a featurelayer for the survey results
+            const surveylayer = new FeatureLayer({
+                //URL to the service
+                url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/survey123_9463f7e3593541f3921d5f1795347c07_results/FeatureServer",
+
+                // retrieve some data attributes from the feature layer
+                outFields: ["when_did_the_flood_happen","what_time_did_the_flood_happen","please_describe_the_flooding"],
+                // Add a popup and renderer
+                popupTemplate: popupSurvey,
+                renderer: surveyRenderer
+            });
+
+            // Give the survey layer a better title
+            surveylayer.title = "Community Flood Reports";
+
+            //add the survey results layer to the map
+            map.add(surveylayer);
 
             // Add in a legend
             const legend = new Legend({
