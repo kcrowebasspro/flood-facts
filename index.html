@@ -7,6 +7,37 @@
 
     <title>Flood Facts: Mobile County, Alabama</title>
 
+    <style>
+        html,
+        body,
+        #viewDiv {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            width: 100%;
+        }
+
+       .addRecordButton {
+        position: absolute;
+        z-index: 10;
+        top: 10px;
+        right: 10px;
+        background-color: #3e974d;
+        color: white;
+        padding: 8px 16px;
+        border: none;
+        border-radius: 4px;
+        font-size: 14px;
+        cursor: pointer;
+        text-decoration: none;
+       }
+
+       .addRecordButton:hover{
+        background-color: #005a87;
+       }
+       
+
+    </style>
 
     <!-- importing the css and libraries for esri.js-->
     <link rel="stylesheet" href="https://js.arcgis.com/4.26/esri/themes/light/main.css" />
@@ -230,8 +261,10 @@
     <a href="https://arcg.is/1fS4fz0" target="_blank" class="addRecordButton">Report Flood</a>
     <div class="accordian">
         <input type="checkbox" id="trigger"/>
-        <label for="trigger">Click me to expand</label>
-        <div>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</div>
+        <label for="trigger">Click for intro</label>
+        <div>Welcome to Flood Facts! This map contains a collection of data about flood events and risk in Mobile County, Alabama. If you have experienced a flood, please use the "Report Flood" button to share your 
+            experience. The flood event data comes from the National Weather Service and are reported events from the service and their partners. The High Tide Flood zone data comes from the National Oceanic and 
+            Atmospheric Administration, and information about the the Special Flood Hazard Areas comes from the Federal Emergency Management Agency.</div>
       </div>
 
     <div id = "viewDiv"></div>
